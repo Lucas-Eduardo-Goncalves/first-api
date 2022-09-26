@@ -1,10 +1,15 @@
+import { inject, injectable } from "tsyringe";
 import type { SpecificationsRepository } from "../../repositories/implementations/SpecificationsRepository";
 
+@injectable()
 class ListSpecificationsUseCase {
-  constructor(private specificationsRepository: SpecificationsRepository) {}
+  constructor(
+    @inject("SpecificationsRepository")
+    private specificationsRepository: SpecificationsRepository
+  ) {}
 
-  execute() {
-    return this.specificationsRepository.list();
+  async execute() {
+    return await this.specificationsRepository.list();
   }
 };
 
