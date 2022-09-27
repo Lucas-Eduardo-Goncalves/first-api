@@ -12,6 +12,7 @@ class CreateUserController {
       email,
       password,
       driver_license,
+      avatar: null,
     });
 
     return response.status(201).send();

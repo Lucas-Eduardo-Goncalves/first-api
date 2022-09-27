@@ -3,7 +3,6 @@ import { sign } from "jsonwebtoken";
 import { inject, injectable } from "tsyringe";
 import { AppError } from "../../../../errors/AppErrors";
 
-import type { User } from "../../entities/User";
 import type { IUserRepository } from "../../repositories/IUserRepositories";
 
 interface IRequest {

@@ -33,6 +33,8 @@ export async function ensureAuthenticated(
       throw new AppError("Invalid token!", 401);
     }
 
+    request.body.user = { id: user.id };
+
     next();
   } catch (err) {
     throw new AppError("Invalid token!", 401);
