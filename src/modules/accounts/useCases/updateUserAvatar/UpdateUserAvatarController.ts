@@ -5,7 +5,7 @@ import { AppError } from "../../../../errors/AppErrors";
 
 class UpdateUserAvatarController {
   async handle(request: Request, response: Response): Promise<Response> {
-    const { id } = request.body;
+    const id = response.locals.userId;
     const avatar_file = request.file?.filename;
 
     const updateUserAvatarUserCase = container.resolve(

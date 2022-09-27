@@ -4,7 +4,7 @@ import { Entity, PrimaryColumn, Column, CreateDateColumn } from "typeorm";
 @Entity("users")
 class User {
   @PrimaryColumn()
-  id: string;
+  id?: string;
 
   @Column()
   name: string;
@@ -22,7 +22,7 @@ class User {
   isAdmin: boolean;
 
   @Column()
-  avatar: string;
+  avatar?: string;
 
   @CreateDateColumn()
   created_at: Date;
@@ -30,6 +30,10 @@ class User {
   constructor() {
     if (!this.id) {
       this.id = uuidV4();
+    }
+
+    if (!this.avatar) {
+      this.avatar = "";
     }
   }
 }

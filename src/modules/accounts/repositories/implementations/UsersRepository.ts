@@ -15,6 +15,10 @@ class UserRepository implements IUserRepository {
     await this.repository.save(user);
   }
 
+  async update(userData: ICreateUserDTO): Promise<void> {
+    await this.repository.update({ email: userData.email }, userData);
+  }
+
   async findByEmail(userEmail: string): Promise<User | null> {
     const user = await this.repository.findOne({ where: { email: userEmail } });
     return user;
