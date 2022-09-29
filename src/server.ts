@@ -5,7 +5,7 @@ import "./database";
 import "./shared/container";
 
 import { router } from "./routes";
-import { AppError } from "./errors/AppErrors";
+import { AppError } from "./shared/errors/AppErrors";
 
 const app = express();
 

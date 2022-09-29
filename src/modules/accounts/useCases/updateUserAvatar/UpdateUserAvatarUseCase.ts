@@ -1,5 +1,5 @@
 import { inject, injectable } from "tsyringe";
-import { AppError } from "../../../../errors/AppErrors";
+import { AppError } from "../../../../shared/errors/AppErrors";
 import { IUserRepository } from "../../repositories/IUserRepositories";
 import { deleteFile } from "../../../../utils/file";
 

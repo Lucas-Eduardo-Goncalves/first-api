@@ -5,7 +5,7 @@ import type {
   ICreateUserDTO,
   IUserRepository,
 } from "../../repositories/IUserRepositories";
-import { AppError } from "../../../../errors/AppErrors";
+import { AppError } from "../../../../shared/errors/AppErrors";
 
 @injectable()
 class CreateUserUseCase {
