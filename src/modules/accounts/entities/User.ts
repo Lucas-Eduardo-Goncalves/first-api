@@ -4,7 +4,7 @@ import { Entity, PrimaryColumn, Column, CreateDateColumn } from "typeorm";
 @Entity("users")
 class User {
   @PrimaryColumn()
-  id?: string;
+  id: string;
 
   @Column()
   name: string;

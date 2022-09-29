@@ -22,4 +22,4 @@ interface IUserRepository {
   findById: (userId: string) => Promise<User | null>;
 }
 
-export { ICreateUserDTO, IUserRepository };
+export { ICreateUserDTO, IUserRepository, IUpdateUserDTO };

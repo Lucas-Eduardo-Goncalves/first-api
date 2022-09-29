@@ -26,7 +26,7 @@ describe("Create Category", () => {
     expect(category).toHaveProperty("id");
   });
 
-  it("Shoud not be able to create a new category with name exists.", async () => {
+  it("Should not be able to create a new category with name exists.", async () => {
     expect(async () => {
       await createCategoryUseCase.execute({
         name: "Category test",
