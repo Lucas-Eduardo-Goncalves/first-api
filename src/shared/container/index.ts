@@ -6,6 +6,9 @@ import type { ICategoriesRepository } from "../../modules/cars/repositories/ICat
 import { SpecificationsRepository } from "../../modules/cars/repositories/implementations/SpecificationsRepository";
 import type { ISpecificationsRepository } from "../../modules/cars/repositories/ISpecificatinosRepository";
 
+import { CarsRepository } from "../../modules/cars/repositories/implementations/CarsRepository";
+import type { ICarsRepository } from "../../modules/cars/repositories/ICarsRepository";
+
 import { UserRepository } from "../../modules/accounts/repositories/implementations/UsersRepository";
 import type { IUserRepository } from "../../modules/accounts/repositories/IUserRepositories";
 
@@ -18,5 +21,7 @@ container.registerSingleton<ISpecificationsRepository>(
   "SpecificationsRepository",
   SpecificationsRepository
 );
+
+container.registerSingleton<ICarsRepository>("CarsRepository", CarsRepository);
 
 container.registerSingleton<IUserRepository>("UsersRepository", UserRepository);
