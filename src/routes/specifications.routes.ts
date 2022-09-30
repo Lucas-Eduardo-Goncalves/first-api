@@ -1,5 +1,8 @@
 import { Router } from "express";
+
+import { ensureAdmin } from "../shared/middlewares/ensureAdmin";
 import { ensureAuthenticated } from "../shared/middlewares/ensureAuthenticated";
+
 import { CreateSpecificationController } from "../modules/cars/useCases/createSpecification/CreateSpecificationController";
 import { ListSpecificationsController } from "../modules/cars/useCases/listSpecifications/ListSpecificationsController";
 
@@ -9,7 +12,11 @@ const specificationsRoutes = Router();
 specificationsRoutes.use(ensureAuthenticated);
 
 const createSpecificationController = new CreateSpecificationController();
-specificationsRoutes.post("/", createSpecificationController.handle);
+specificationsRoutes.post(
+  "/",
+  ensureAdmin,
+  createSpecificationController.handle
+);
 
 const listSpecificationsController = new ListSpecificationsController();
 specificationsRoutes.get("/", listSpecificationsController.handle);
