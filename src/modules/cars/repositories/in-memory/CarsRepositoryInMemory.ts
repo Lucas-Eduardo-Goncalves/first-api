@@ -4,6 +4,10 @@ import type { ICreateCarDTO, ICarsRepository } from "../ICarsRepository";
 class CarsRepositoryInMemory implements ICarsRepository {
   private cars: Car[] = [];
 
+  async list(): Promise<Car[]> {
+    return this.cars;
+  }
+
   async create(props: ICreateCarDTO): Promise<void> {
     const car = new Car();
     Object.assign(car, props);
