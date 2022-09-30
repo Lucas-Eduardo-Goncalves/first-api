@@ -15,11 +15,11 @@ interface IUpdateUserDTO {
   avatar: string;
 }
 
-interface IUserRepository {
+interface IUsersRepository {
   create: (userData: ICreateUserDTO) => Promise<void>;
   update: (userData: IUpdateUserDTO) => Promise<void>;
   findByEmail: (userEmail: string) => Promise<User | null>;
   findById: (userId: string) => Promise<User | null>;
 }
 
-export { ICreateUserDTO, IUserRepository, IUpdateUserDTO };
+export { ICreateUserDTO, IUsersRepository, IUpdateUserDTO };

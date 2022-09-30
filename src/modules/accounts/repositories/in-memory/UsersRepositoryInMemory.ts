@@ -2,12 +2,12 @@ import { AppError } from "../../../../shared/errors/AppErrors";
 import { User } from "../../entities/User";
 
 import type {
-  IUserRepository,
+  IUsersRepository,
   ICreateUserDTO,
   IUpdateUserDTO,
 } from "../IUserRepositories";
 
-class UsersRepositoryInMemory implements IUserRepository {
+class UsersRepositoryInMemory implements IUsersRepository {
   users: User[] = [];
 
   async create(userData: ICreateUserDTO): Promise<void> {

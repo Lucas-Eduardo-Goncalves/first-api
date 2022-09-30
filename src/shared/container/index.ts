@@ -9,8 +9,8 @@ import type { ISpecificationsRepository } from "../../modules/cars/repositories/
 import { CarsRepository } from "../../modules/cars/repositories/implementations/CarsRepository";
 import type { ICarsRepository } from "../../modules/cars/repositories/ICarsRepository";
 
-import { UserRepository } from "../../modules/accounts/repositories/implementations/UsersRepository";
-import type { IUserRepository } from "../../modules/accounts/repositories/IUserRepositories";
+import { UsersRepository } from "../../modules/accounts/repositories/implementations/UsersRepository";
+import type { IUsersRepository } from "../../modules/accounts/repositories/IUserRepositories";
 
 container.registerSingleton<ICategoriesRepository>(
   "CategoriesRepository",
@@ -24,4 +24,7 @@ container.registerSingleton<ISpecificationsRepository>(
 
 container.registerSingleton<ICarsRepository>("CarsRepository", CarsRepository);
 
-container.registerSingleton<IUserRepository>("UsersRepository", UserRepository);
+container.registerSingleton<IUsersRepository>(
+  "UsersRepository",
+  UsersRepository
+);

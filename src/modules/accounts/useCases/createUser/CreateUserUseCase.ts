@@ -3,7 +3,7 @@ import { hash } from "bcrypt";
 
 import type {
   ICreateUserDTO,
-  IUserRepository,
+  IUsersRepository,
 } from "../../repositories/IUserRepositories";
 import { AppError } from "../../../../shared/errors/AppErrors";
 
@@ -11,11 +11,13 @@ import { AppError } from "../../../../shared/errors/AppErrors";
 class CreateUserUseCase {
   constructor(
     @inject("UsersRepository")
-    private userRepository: IUserRepository
+    private usersRepository: IUsersRepository
   ) {}
 
   async execute({ password, ...rest }: ICreateUserDTO) {
-    const userAlreadyExists = await this.userRepository.findByEmail(rest.email);
+    const userAlreadyExists = await this.usersRepository.findByEmail(
+      rest.email
+    );
 
     if (userAlreadyExists) {
       throw new AppError("User already exists");
@@ -23,7 +25,7 @@ class CreateUserUseCase {
 
     const passwordHash = await hash(password, 8);
 
-    await this.userRepository.create({
+    await this.usersRepository.create({
       password: passwordHash,
       ...rest,
     });
