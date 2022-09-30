@@ -13,7 +13,6 @@ class CreateCarController {
       fine_amount,
       license_plate,
     } = request.body;
-
     const createCarUseCase = container.resolve(CreateCarUseCase);
 
     await createCarUseCase.execute({
