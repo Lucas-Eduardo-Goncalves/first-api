@@ -12,7 +12,11 @@ interface ICreateCarDTO {
 
 interface ICarsRepository {
   create: (props: ICreateCarDTO) => Promise<void>;
-  list: () => Promise<Car[]>;
+  listCarsAvailable: (
+    category_id?: string,
+    brand?: string,
+    name?: string
+  ) => Promise<Car[]>;
   findByLicensePlate: (licensePlate: string) => Promise<Car | null>;
 }
 

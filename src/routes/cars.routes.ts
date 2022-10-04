@@ -3,7 +3,7 @@ import { Router } from "express";
 import { ensureAdmin } from "../shared/middlewares/ensureAdmin";
 import { ensureAuthenticated } from "../shared/middlewares/ensureAuthenticated";
 import { CreateCarController } from "../modules/cars/useCases/createCar/CreateCarController";
-import { ListCarController } from "../modules/cars/useCases/listCar/listCarController";
+import { ListAvailableCarController } from "../modules/cars/useCases/listAvailableCars/listAvailableCarsController";
 
 const carsRoutes = Router();
 
@@ -15,7 +15,7 @@ carsRoutes.post(
   createCarController.handle
 );
 
-const listCarController = new ListCarController();
-carsRoutes.get("/", listCarController.handle);
+const listAvailableCarController = new ListAvailableCarController();
+carsRoutes.get("/", listAvailableCarController.handle);
 
 export { carsRoutes };

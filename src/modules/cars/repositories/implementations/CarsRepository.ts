@@ -11,14 +11,24 @@ class CarsRepository implements ICarsRepository {
     this.repository = AppDataSource.getRepository(Car);
   }
 
-  async list() {
-    const cars = await this.repository.find();
-    return cars;
-  }
+  async listCarsAvailable(category_id?: string, brand?: string, name?: string) {
+    const carsQuery = this.repository
+      .createQueryBuilder("c")
+      .where("available = :available", { available: true });
 
-  async create(props: ICreateCarDTO): Promise<void> {
-    const car = this.repository.create(props);
-    await this.repository.save(car);
+    if (category_id) {
+      carsQuery.andWhere("c.category_id = :category_id", { category_id });
+    }
+
+    if (brand) {
+      carsQuery.andWhere("c.brand = :brand", { brand });
+    }
+
+    if (name) {
+      carsQuery.andWhere("c.name = :name", { name });
+    }
+
+    return await carsQuery.getMany();
   }
 
   async findByLicensePlate(licensePlate: string): Promise<Car | null> {
@@ -27,6 +37,11 @@ class CarsRepository implements ICarsRepository {
     });
 
     return car;
+  }
+
+  async create(props: ICreateCarDTO): Promise<void> {
+    const car = this.repository.create(props);
+    await this.repository.save(car);
   }
 }
 
